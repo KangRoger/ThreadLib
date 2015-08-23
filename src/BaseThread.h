@@ -5,13 +5,13 @@
 class BaseThread
 {
 public:
-	BaseThread(std::string& name);
+	BaseThread(const std::string& name);
 	virtual ~BaseThread();
 	 void Run();
 	void Join();
 	static void* ThreadProxy(void* argument);
 protected:
-	virtual void DoTask(void* argument) = 0;
+	virtual void DoTask() = 0;
 
 private:
 	void Initilization();

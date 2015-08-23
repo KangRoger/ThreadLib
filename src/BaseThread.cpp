@@ -3,7 +3,7 @@
 #include <assert.h>
 #include <sys/syscall.h>
 
-BaseThread::BaseThread(std::string& name)
+BaseThread::BaseThread(const std::string& name)
 	:initilized_(false),
 	started_(false),
 	joined_(false),
@@ -42,7 +42,7 @@ void* BaseThread::ThreadProxy(void* argument)
 	BaseThread* thread=static_cast<BaseThread*>(argument);
 	thread->Initilization();
 	thread->started_=true;
-	thread->DoTask(NULL);
+	thread->DoTask();
 	return static_cast<void*> (0);
 
 }
